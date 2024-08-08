@@ -1,3 +1,5 @@
+import 'package:animated_drawer/features/home/screens/entry_point/components/info_card.dart';
+import 'package:animated_drawer/features/home/screens/entry_point/components/side_menu.dart';
 import 'package:animated_drawer/models/menu.dart';
 import 'package:animated_drawer/utils/rive_utils.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +32,8 @@ class _SideBarState extends State<SideBar> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const InfoCard(
-                name: "Abu Anwar",
-                bio: "YouTuber",
+                name: "Ritik Joshi",
+                bio: "Flutter Developer",
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 24, top: 32, bottom: 16),

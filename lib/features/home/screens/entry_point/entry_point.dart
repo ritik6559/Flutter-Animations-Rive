@@ -1,5 +1,6 @@
 import 'package:animated_drawer/constants/constants.dart';
 import 'package:animated_drawer/features/home/screens/entry_point/components/btm_nav_item.dart';
+import 'package:animated_drawer/features/home/screens/entry_point/components/side_bar.dart';
 import 'package:animated_drawer/features/home/screens/home/home_screen.dart';
 import 'package:animated_drawer/models/menu.dart';
 import 'package:animated_drawer/utils/rive_utils.dart';

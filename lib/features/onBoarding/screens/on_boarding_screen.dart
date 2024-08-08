@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:animated_drawer/features/onBoarding/widgets/animated_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -11,6 +13,17 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  late RiveAnimationController _btnAnimationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _btnAnimationController = OneShotAnimation("active",
+        autoplay:
+            false //we are doing this so that it does not show animation every time we restart.
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +48,47 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: const SizedBox(),
             ),
           ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  const SizedBox(
+                    width: 260,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Learn design & code",
+                          style: TextStyle(
+                            fontSize: 60,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Poppins",
+                            height: 1.2,
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Text(
+                          "Don’t skip design. Learn design and code, by building real apps with Flutter and Swift. Complete courses about the best tools.",
+                        ),
+                      ],
+                    ),
+                  ),
+                  AnimatedButton(
+                    onTap: () => _btnAnimationController.isActive = true,
+                    riveAnimationController: _btnAnimationController,
+                  ),
+                  const Spacer(flex: 2),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    child: Text(
+                        "Purchase includes access to 30+ courses, 240+ premium tutorials, 120+ hours of videos, source files and certificates."),
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

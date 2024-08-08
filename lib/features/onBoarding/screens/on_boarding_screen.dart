@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:animated_drawer/features/onBoarding/widgets/animated_button.dart';
-import 'package:animated_drawer/features/onBoarding/widgets/sign_in_form.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:animated_drawer/features/onBoarding/widgets/sign_in_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -14,6 +13,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  bool isSignInDialogShown = false;
   late RiveAnimationController _btnAnimationController;
 
   @override
@@ -49,102 +49,65 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: const SizedBox(),
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Spacer(),
-                  const SizedBox(
-                    width: 260,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Learn design & code",
-                          style: TextStyle(
-                            fontSize: 60,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: "Poppins",
-                            height: 1.2,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Don’t skip design. Learn design and code, by building real apps with Flutter and Swift. Complete courses about the best tools.",
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Spacer(flex: 2),
-                  AnimatedButton(
-                    onTap: () {
-                      _btnAnimationController.isActive = true;
-                      showGeneralDialog(
-                        barrierLabel: "Sign In",
-                        barrierDismissible:
-                            true, //on tapping outside the dialog to close it.
-                        context: context,
-                        pageBuilder: (context, animation, secondaryAnimation) {
-                          return Center(
-                            child: Container(
-                              height: 670,
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 32, horizontal: 24),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.95),
-                                borderRadius: BorderRadius.circular(40),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    offset: const Offset(0, 30),
-                                    blurRadius: 60,
-                                  ),
-                                  const BoxShadow(
-                                    color: Colors.black45,
-                                    offset: Offset(0, 30),
-                                    blurRadius: 60,
-                                  ),
-                                ],
-                              ),
-                              child: const Scaffold(
-                                backgroundColor: Colors.transparent,
-                                body: Column(
-                                  children: [
-                                    Text(
-                                      "Sign In",
-                                      style: TextStyle(
-                                        fontSize: 34,
-                                        fontFamily: "Poppins",
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 16),
-                                      child: Text(
-                                        "Access to 240+ hours of content. Learn design and code, by building real apps with Flutter and Swift.",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    SignInForm(),
-                                  ],
-                                ),
-                              ),
+          AnimatedPositioned(
+            top: isSignInDialogShown ? -50 : 0,
+            duration: const Duration(milliseconds: 240),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Spacer(),
+                    const SizedBox(
+                      width: 260,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Learn design & code",
+                            style: TextStyle(
+                              fontSize: 60,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "Poppins",
+                              height: 1.2,
                             ),
-                          );
-                        },
-                      );
-                    },
-                    riveAnimationController: _btnAnimationController,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24),
-                    child: Text(
-                        "Purchase includes access to 30+ courses, 240+ premium tutorials, 120+ hours of videos, source files and certificates."),
-                  ),
-                ],
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            "Don’t skip design. Learn design and code, by building real apps with Flutter and Swift. Complete courses about the best tools.",
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(flex: 2),
+                    AnimatedButton(
+                      onTap: () {
+                        _btnAnimationController.isActive = true;
+                        Future.delayed(
+                          const Duration(milliseconds: 600),
+                          () {
+                            setState(() {
+                              isSignInDialogShown = true;
+                            });
+                            customSignInDialog(context, onClosed: (_) {
+                              setState(() {
+                                isSignInDialogShown = false;
+                              });
+                            });
+                          },
+                        );
+                      },
+                      riveAnimationController: _btnAnimationController,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 24),
+                      child: Text(
+                          "Purchase includes access to 30+ courses, 240+ premium tutorials, 120+ hours of videos, source files and certificates."),
+                    ),
+                  ],
+                ),
               ),
             ),
           )

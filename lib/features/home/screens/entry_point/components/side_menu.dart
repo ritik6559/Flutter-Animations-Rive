@@ -4,6 +4,10 @@ import 'package:rive/rive.dart';
 
 
 class SideMenu extends StatelessWidget {
+  final Menu menu;
+  final VoidCallback press;
+  final ValueChanged<Artboard> riveOnInit;
+  final Menu selectedMenu;
   const SideMenu(
       {super.key,
       required this.menu,
@@ -11,10 +15,7 @@ class SideMenu extends StatelessWidget {
       required this.riveOnInit,
       required this.selectedMenu});
 
-  final Menu menu;
-  final VoidCallback press;
-  final ValueChanged<Artboard> riveOnInit;
-  final Menu selectedMenu;
+  
 
   @override
   Widget build(BuildContext context) {

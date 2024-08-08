@@ -1,4 +1,3 @@
-import 'package:animated_drawer/features/home/screens/entry_point/entry_point.dart';
 import 'package:animated_drawer/features/onBoarding/screens/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const EntryPoint(),
+      home: const OnBoardingScreen(),
     );
   }
 }

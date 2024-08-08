@@ -1,4 +1,4 @@
-import 'package:animated_drawer/features/home/screens/home_screen.dart';
+import 'package:animated_drawer/features/home/screens/entry_point.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,7 +65,7 @@ class _SignInFormState extends State<SignInForm> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
+                    builder: (context) => const EntryPoint(),
                   ),
                 );
               });

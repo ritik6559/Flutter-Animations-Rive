@@ -3,14 +3,14 @@ import 'dart:math';
 import 'package:animated_drawer/info_card.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen1 extends StatefulWidget {
+  const HomeScreen1({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen1> createState() => _HomeScreen1State();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreen1State extends State<HomeScreen1> {
   double value = 0;
 
   @override

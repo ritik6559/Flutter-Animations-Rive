@@ -1,4 +1,4 @@
-import 'package:animated_drawer/features/home/screens/entry_point.dart';
+import 'package:animated_drawer/features/home/screens/entry_point/entry_point.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
